@@ -35,7 +35,7 @@ SUBSTATIONKEYS = []
 
 # Data type for each key
 DTYPE_HEADERKEYS = {"IC": str, "SBASE": str, "REV": str, "XFRRAT": str, "NXFRAT": str, "BASFRQ": str}
-DTYPE_BUSKEYS = {"I": str, "NAME": str, "BASKV": str, "IDE": str, "AREA": str, "ZONE": str, "OWNER": str, "VM": str, "VA": str, "NVHI": str, "NVLO": str, "EVHI": str, "EVLO": str}
+DTYPE_BUSKEYS = {"I": int, "NAME": str, "BASKV": float, "IDE": int, "AREA": int, "ZONE": int, "OWNER": int, "VM": float, "VA": float, "NVHI": float, "NVLO": float, "EVHI": float, "EVLO": float}
 DTYPE_LOADKEYS = {"I": int, "ID": str, "STAT": str, "AREA": str, "ZONE": str, "PL": str, "QL": str, "IP": str, "IQ": str, "YP": str, "YQ": str, "OWNER": str, "SCALE": str, "INTRPT": str, "DGENP": str, "DGENQ": str, "DGENF": str}
 DTYPE_FIXEDSHUNTKEYS = {"I": str, "ID": str, "STATUS": str, "GL": str, "BL": str}
 DTYPE_GENERATORKEYS = { "I": str, "ID": str, "PG": str, "QG": str, "QT": str, "QB": str, "VS": str,"IREG": str, "MBASE": str, "ZR": str, "ZX": str, "RT": str, "XT": str, "GTAP": str,"STAT": str, "RMPCT": str, "PT": str, "PB": str, "O1": str, "F1": str, "O2": str, "F2": str, "O3": str, "F3": str,"O4": str, "F4": str, "WMOD": str, "WPF": str, "NREG": str}
@@ -69,6 +69,7 @@ DTYPE_INDUCTIONMACHINEKEYS={"I": str, "'ID'": str, "ST": str, "SC": str, "DC": s
 DTYPE_SUBSTATIONKEYS = {}
 
 DATA = {
+    "HEADER": HEADERKEYS,
     "BUS": BUSKEYS,
     "LOAD": LOADKEYS,
     "FIXED SHUNT": FIXEDSHUNTKEYS,
@@ -93,6 +94,7 @@ DATA = {
     }
 
 DTYPE_DATA = {
+    "HEADER": DTYPE_HEADERKEYS,
     "BUS": DTYPE_BUSKEYS,
     "LOAD": DTYPE_LOADKEYS,
     "FIXED SHUNT": DTYPE_FIXEDSHUNTKEYS,
