@@ -29,14 +29,23 @@ Los datos estaran estructurados de acuerdo a la especificacion del manual del PS
 Dentro de cada uno de estos diccionarios habra una lista con cada componente, cuyas llaves corresponden al string especificado en el manual (ver PAGV y POM). Estos strings van en MAYUSCULAS.
 
 # Ejemplo minimo de uso
+La lectura de los datos se puede hacer con:
+
 ```python
 data = psse34parser.read_case("case.raw")
 for load in data["LOAD"]:
     print(f"{load["I"]}\t{load["PL"]}")
 ```
 
+Tambien se puede generar un `DataFrame` de la siguiente manera
+```python
+data = psse34parser.read_case("case.raw")
+generate_dataframe_model(data)
+print(data["BUS"].head())
+```
+
 # Cosas para hacer
-[ ] Generar tablas con DataFrames de los componentes
+[x] Generar tablas con DataFrames de los componentes
 [ ] Posibilidad de pasar el diccionario con la estructura a un objeto 
 
 # Desarrollo
