@@ -1,8 +1,8 @@
 import re
-from .dataformat import DATA, DTYPE_DATA, HEADERKEYS, DTYPE_HEADERKEYS,MULTILINECOMPONENTS
+from .dataformat import SEQ_DATA, RAW_DATA, DTYPE_SEQ_DATA, DTYPE_RAW_DATA, HEADERKEYS, DTYPE_HEADERKEYS,MULTILINECOMPONENTS
 
-def read_case(filename):
-    case34 = {key: [] for key in DATA.keys()}
+def read_case_raw(filename):
+    case34 = {key: [] for key in RAW_DATA.keys()}
     key = None
 
     with open(filename, encoding="latin-1") as f:
@@ -29,28 +29,30 @@ def read_case(filename):
             if key:
                 if key not in MULTILINECOMPONENTS:
                     # Get parts and pad with None missing info
-                    parts = get_parts(line, DATA[key], DTYPE_DATA[key])
+                    parts = get_parts(line, RAW_DATA[key], DTYPE_RAW_DATA[key])
 
                     # Add to the case
                     case34[key].append(parts)
 
                 elif key == "TRANSFORMER":
                     components = []
-                    for j, sublist in enumerate(DATA[key]):
-                        parts = get_parts(line, sublist, DTYPE_DATA[key][j])
+                    for j, sublist in enumerate(RAW_DATA[key]):
+                        if not line:
+                            continue
+                        parts = get_parts(line, sublist, DTYPE_RAW_DATA[key][j])
                         components.append(parts)
                         if j < 3:
                             line = next(f)
                         elif j == 3:
-                            line = next(f) if components[0]["K"] != '0' else ""
+                            line = next(f) if components[0]["K"] != 0 else ""
                     # Append to case
                     case34[key].append(components)
                 else:
                     components = []
-                    for j, sublist in enumerate(DATA[key]):
-                        parts = get_parts(line, sublist, DTYPE_DATA[key][j])
+                    for j, sublist in enumerate(RAW_DATA[key]):
+                        parts = get_parts(line, sublist, DTYPE_RAW_DATA[key][j])
                         components.append(parts)
-                        if j < len(DATA[key]) - 1:
+                        if j < len(RAW_DATA[key]) - 1:
                             line = next(f)
                     # Append to case
                     case34[key].append(components)
@@ -75,8 +77,57 @@ def get_type_of_data(line):
 
     return None
 
+
 def get_parts(line, data: list, dtype: dict):
     parts = [part.strip() for part in line.split(",")]
     parts.extend([None] * (len(data) - len(parts)))
-    component = {key: dtype[key](part) for key, part in zip(data, parts)}
+    component = {key: try_parse(dtype[key], part) for key, part in zip(data, parts)}
     return component
+
+
+def try_parse(dtype, data):
+    try:
+        return dtype(data)
+    except TypeError:
+        return None
+
+
+def read_case_seq(filename):
+    case34 = {key: [] for key in SEQ_DATA.keys()}
+    key = None
+
+    with open(filename, encoding="latin-1") as f:
+
+        for line in f:
+                        # Get type of data
+            type_data = get_type_of_data(line)
+            if type_data == "END":
+                break # End of file
+
+            if type_data == "COMMENT":
+                
+                continue # Skip comment
+
+            if type_data == "HEADER":
+                #parts = get_parts(line.split("/")[0], HEADERKEYS, DTYPE_HEADERKEYS)
+                #case34["HEADER"] = parts
+                continue
+
+            if type_data: # Header of block data
+                key = type_data
+                print(key)
+                continue
+
+            if key:
+                if key == "ZERO SEQ. TRANSFORMER":
+                    is_three_winding = line.split(",")[2].strip() != "0"
+                    if is_three_winding:
+                        parts = get_parts(line, SEQ_DATA[key][1], DTYPE_SEQ_DATA[key][1])
+                    else:
+                        parts = get_parts(line, SEQ_DATA[key][0], DTYPE_SEQ_DATA[key][0])
+                else:
+                    parts = get_parts(line, SEQ_DATA[key], DTYPE_SEQ_DATA[key])
+
+                case34[key].append(parts)
+
+    return case34

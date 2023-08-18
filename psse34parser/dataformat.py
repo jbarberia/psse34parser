@@ -38,14 +38,14 @@ DTYPE_HEADERKEYS = {"IC": str, "SBASE": str, "REV": str, "XFRRAT": str, "NXFRAT"
 DTYPE_BUSKEYS = {"I": int, "NAME": str, "BASKV": float, "IDE": int, "AREA": int, "ZONE": int, "OWNER": int, "VM": float, "VA": float, "NVHI": float, "NVLO": float, "EVHI": float, "EVLO": float}
 DTYPE_LOADKEYS = {"I": int, "ID": str, "STAT": str, "AREA": str, "ZONE": str, "PL": str, "QL": str, "IP": str, "IQ": str, "YP": str, "YQ": str, "OWNER": str, "SCALE": str, "INTRPT": str, "DGENP": str, "DGENQ": str, "DGENF": str}
 DTYPE_FIXEDSHUNTKEYS = {"I": str, "ID": str, "STATUS": str, "GL": str, "BL": str}
-DTYPE_GENERATORKEYS = { "I": str, "ID": str, "PG": str, "QG": str, "QT": str, "QB": str, "VS": str,"IREG": str, "MBASE": str, "ZR": str, "ZX": str, "RT": str, "XT": str, "GTAP": str,"STAT": str, "RMPCT": str, "PT": str, "PB": str, "O1": str, "F1": str, "O2": str, "F2": str, "O3": str, "F3": str,"O4": str, "F4": str, "WMOD": str, "WPF": str, "NREG": str}
+DTYPE_GENERATORKEYS = { "I": int, "ID": str, "PG": float, "QG": float, "QT": float, "QB": float, "VS": float,"IREG": float, "MBASE": float, "ZR": float, "ZX": float, "RT": float, "XT": float, "GTAP": float,"STAT": int, "RMPCT": float, "PT": float, "PB": float, "O1": int, "F1": float, "O2": int, "F2": float, "O3": int, "F3": float,"O4": int, "F4": float, "WMOD": int, "WPF": float, "NREG": str}
 DTYPE_BRANCHKEYS = {"I": str, "J": str, "CKT": str, "R": str, "X": str, "B": str, "NAME": str, "RATE1": str, "RATE2": str, "RATE3": str, "RATE4": str, "RATE5": str, "RATE6": str, "RATE7": str, "RATE8": str, "RATE9": str, "RATE10": str, "RATE11": str, "RATE12": str, "GI": str, "BI": str, "GJ": str, "BJ": str, "STAT": str, "MET": str, "LEN": str, "O1": str, "F1": str, "O2": str, "F2": str, "O3": str, "F3": str, "O4": str, "F4": str}
 DTYPE_SYSTEMSWITCHINGDEVICEKEYS = {"I": str, "J": str, "CKT": str, "X": str, "RATE1": str, "RATE2": str, "RATE3": str, "RATE4": str, "RATE5": str, "RATE6": str, "RATE7": str, "RATE8": str, "RATE9": str, "RATE10": str, "RATE11": str, "RATE12": str, "STAT": str, "NSTAT": str, "MET": str, "STYPE": str, "NAME": str}
-DTYPE_TRANSFORMERP1KEYS={"I": str, "J": str, "K": str, "CKT": str, "CW": str, "CZ": str, "CM": str, "MAG1": str, "MAG2": str, "NMETR": str, "NAME": str, "STAT": str, "O1": str, "F1": str, "O2": str, "F2": str, "O3": str, "F3": str, "O4": str, "F4": str, "VECGRP": str, "ZCOD": str}
-DTYPE_TRANSFORMERP2KEYS = {"R1-2": str, "X1-2": str, "SBASE1-2": str, "R2-3": str, "X2-3": str, "SBASE2-3": str, "R3-1": str, "X3-1": str, "SBASE3-1": str, "VMSTAR": str, "ANSTAR": str}
-DTYPE_TRANSFORMERL1KEYS = {"WINDV1": str, "NOMV1": str, "ANG1": str, "RATE1-1": str, "RATE1-2": str, "RATE1-3": str, "RATE1-4": str, "RATE1-5": str, "RATE1-6": str, "RATE1-7": str, "RATE1-8": str, "RATE1-9": str, "RATE1-10": str, "RATE1-11": str, "RATE1-12": str, "COD1": str, "CONT1": str, "RMA1": str, "RMI1": str, "VMA1": str, "VMI1": str, "NTP1": str, "TAB1": str, "CR1": str, "CX1": str, "CNXA1": str, "NOD1": str}
-DTYPE_TRANSFORMERL2KEYS = {"WINDV2": str, "NOMV2": str, "ANG2": str, "RATE2-1": str, "RATE2-2": str, "RATE2-3": str, "RATE2-4": str, "RATE2-5": str, "RATE2-6": str, "RATE2-7": str, "RATE2-8": str, "RATE2-9": str, "RATE2-10": str, "RATE2-11": str, "RATE2-12": str, "COD2": str, "CONT2": str, "RMA2": str, "RMI2": str, "VMA2": str, "VMI2": str, "NTP2": str, "TAB2": str, "CR2": str, "CX2": str, "CNXA2": str, "NOD2": str}
-DTYPE_TRANSFORMERL3KEYS = {"WINDV3": str, "NOMV3": str, "ANG3": str, "RATE3-1": str, "RATE3-2": str, "RATE3-3": str, "RATE3-4": str, "RATE3-5": str, "RATE3-6": str, "RATE3-7": str, "RATE3-8": str, "RATE3-9": str, "RATE3-10": str, "RATE3-11": str, "RATE3-12": str, "COD3": str, "CONT3": str, "RMA3": str, "RMI3": str, "VMA3": str, "VMI3": str, "NTP3": str, "TAB3": str, "CR3": str, "CX3": str, "CNXA3": str, "NOD3": str}
+DTYPE_TRANSFORMERP1KEYS={"I": int, "J": int, "K": int, "CKT": str, "CW": int, "CZ": int, "CM": int, "MAG1": float, "MAG2": float, "NMETR": int, "NAME": str, "STAT": int, "O1": int, "F1": float, "O2": int, "F2": float, "O3": int, "F3": float, "O4": int, "F4": float, "VECGRP": str, "ZCOD": int}
+DTYPE_TRANSFORMERP2KEYS = {"R1-2": float, "X1-2": float, "SBASE1-2": float, "R2-3": float, "X2-3": float, "SBASE2-3": float, "R3-1": float, "X3-1": float, "SBASE3-1": float, "VMSTAR": float, "ANSTAR": float}
+DTYPE_TRANSFORMERL1KEYS = {"WINDV1": float, "NOMV1": float, "ANG1": float, "RATE1-1": float, "RATE1-2": float, "RATE1-3": float, "RATE1-4": float, "RATE1-5": float, "RATE1-6": float, "RATE1-7": float, "RATE1-8": float, "RATE1-9": float, "RATE1-10": float, "RATE1-11": float, "RATE1-12": float, "COD1": int, "CONT1": int, "RMA1": float, "RMI1": float, "VMA1": float, "VMI1": float, "NTP1": int, "TAB1": int, "CR1": float, "CX1": float, "CNXA1": float, "NOD1": int}
+DTYPE_TRANSFORMERL2KEYS = {"WINDV2": float, "NOMV2": float, "ANG2": float, "RATE2-1": float, "RATE2-2": float, "RATE2-3": float, "RATE2-4": float, "RATE2-5": float, "RATE2-6": float, "RATE2-7": float, "RATE2-8": float, "RATE2-9": float, "RATE2-10": float, "RATE2-11": float, "RATE2-12": float, "COD2": int, "CONT2": int, "RMA2": float, "RMI2": float, "VMA2": float, "VMI2": float, "NTP2": int, "TAB2": int, "CR2": float, "CX2": float, "CNXA2": float, "NOD2": int}
+DTYPE_TRANSFORMERL3KEYS = {"WINDV3": float, "NOMV3": float, "ANG3": float, "RATE3-1": float, "RATE3-2": float, "RATE3-3": float, "RATE3-4": float, "RATE3-5": float, "RATE3-6": float, "RATE3-7": float, "RATE3-8": float, "RATE3-9": float, "RATE3-10": float, "RATE3-11": float, "RATE3-12": float, "COD3": int, "CONT3": int, "RMA3": float, "RMI3": float, "VMA3": float, "VMI3": float, "NTP3": int, "TAB3": int, "CR3": float, "CX3": float, "CNXA3": float, "NOD3": int}
 DTYPE_AREAKEYS = {"I": str, "ISW": str, "PDES": str, "PTOL": str, "ARNAME": str}
 DTYPE_TWOTERMINALDCL1KEYS = {"NAME": str, "MDC": str, "RDC": str, "SETVL": str, "VSCHD": str, "VCMOD": str, "RCOMP": str, "DELTI": str, "METER": str, "DCVMIN": str, "CCCITMX": str, "CCCACC": str}
 DTYPE_TWOTERMINALDCL2KEYS = {"IPR": str, "NBR": str, "ANMXR": str, "ANMNR": str, "RCR": str, "XCR": str, "EBASR": str, "TRR": str, "TAPR": str, "TMXR": str, "TMNR": str, "STPR": str, "ICR": str, "IFR": str, "ITR": str, "IDR": str, "XCAPR": str, "NDR": str}
@@ -68,7 +68,7 @@ DTYPE_GNEKEYS = {} # Not supported yet
 DTYPE_INDUCTIONMACHINEKEYS={"I": str, "'ID'": str, "ST": str, "SC": str, "DC": str, "AREA": str, "ZONE": str, "OWNER": str, "TC": str, "BC": str, "MBASE": str, "RATEKV": str, "PC": str, "PSET": str, "H": str, "A": str, "B": str, "D": str, "E": str, "RA": str, "XA": str, "XM": str, "R1": str, "X1": str, "R2": str, "X2": str, "X3": str, "E1": str, "SE1": str, "E2": str, "SE2": str, "IA1": str, "IA2": str, "XAMULT": str}
 DTYPE_SUBSTATIONKEYS = {}
 
-DATA = {
+RAW_DATA = {
     "HEADER": HEADERKEYS,
     "BUS": BUSKEYS,
     "LOAD": LOADKEYS,
@@ -93,7 +93,7 @@ DATA = {
     "SUBSTATION": SUBSTATIONKEYS
     }
 
-DTYPE_DATA = {
+DTYPE_RAW_DATA = {
     "HEADER": DTYPE_HEADERKEYS,
     "BUS": DTYPE_BUSKEYS,
     "LOAD": DTYPE_LOADKEYS,
@@ -119,3 +119,49 @@ DTYPE_DATA = {
     }
     
 MULTILINECOMPONENTS = ["TRANSFORMER", "TWO-TERMINAL DC", "VSC DC LINE", "IMPEDANCE CORRECTION", "MULTI-TERMINAL DC"]
+
+SEQGENERATORKEYS = ["I", "ID", "ZRPOS", "ZXPPDV", "ZXPDV", "ZXSDV", "ZRNEG", "ZXNEGDV", "ZR0", "ZX0DV", "CZG", "ZRG", "ZXG", "REFDEG"]
+SEQLOADKEYS = ["I", "ID", "PNEG", "QNEG", "GRDFLG", "PZERO", "QZERO"]
+ZEROSEQNONTRANSFORMERBRANCHKEYS = ["I", "J", "ICKT", "RLINZ", "XLINZ", "BCHZ", "GI", "BI", "GJ", "BJ", "IPR", "SCTYP"]
+ZEROSEQMUTUALDATA = ["I", "J", "ICKT1", "K", "L", "'ICKT2'", "RM", "XM", "BIJ1", "BIJ2", "BKL1", "BKL2"]
+ZEROSEQ2WTRANSFORMERKEYS = ["I", "J", "K", "ICKT", "CZ0", "CZG", "CC", "RG1", "XG1", "R01", "X01", "RG2", "XG2", "R02", "X02", "RNUTRL", "XNUTRL"]
+ZEROSEQ3WTRANSFORMERKEYS = ["I", "J", "K", "ICKT", "CZ0", "CZG", "CC", "RG1", "XG1", "R01", "X01", "RG2", "XG2", "R02", "X02", "RG3", "XG3", "R03", "X03", "RNUTRL", "XNUTRL"]
+ZEROSEQSWITCHEDSHUNTKEYS = ["I", "BZ1", "BZ2", "BZ3", "BZ4", "BZ5", "BZ6", "BZ7", "BZ8"]
+ZEROSEQFIXEDSHUNTKEYS = ["I", "ID", "GSZERO", "BSZERO"]
+SEQINDUCTIONMACHINEKEYS = ["I", "ID", "CZG", "GRDFLG", "ILR2IR", "RTOX", "ZR0", "ZX0", "ZRG", "ZXG", "ILR2IR_TRN", "RTOX_TRN", "ILR2IR_NEG", "RTOX_NEG1"]
+NONCONVENTIONALSOURCEFAULTCONTRIBUTIONKEYS = ["I", "ID", "T1", "C1P", "C1Q", "T2", "C2P", "C2Q", "T3", "C3P", "C3Q", "T4", "C4P", "C4Q", "T5", "C5P", "C5Q", "T6", "C6P", "C6Q"]
+
+DTYPE_SEQGENERATORKEYS = {"I": int, "ID": str, "ZRPOS": float, "ZXPPDV": float, "ZXPDV": float, "ZXSDV": float, "ZRNEG": float, "ZXNEGDV": float, "ZR0": float, "ZX0DV": float, "CZG": float, "ZRG": float, "ZXG": float, "REFDEG": float}
+DTYPE_SEQLOADKEYS = {"I": str, "ID": str, "PNEG": str, "QNEG": str, "GRDFLG": str, "PZERO": str, "QZERO": str}
+DTYPE_ZEROSEQNONTRANSFORMERBRANCHKEYS = {"I": str, "J": str, "ICKT": str, "RLINZ": str, "XLINZ": str, "BCHZ": str, "GI": str, "BI": str, "GJ": str, "BJ": str, "IPR": str, "SCTYP": str}
+DTYPE_ZEROSEQMUTUALDATA = {"I": str, "J": str, "ICKT1": str, "K": str, "L": str, "'ICKT2'": str, "RM": str, "XM": str, "BIJ1": str, "BIJ2": str, "BKL1": str, "BKL2": str}
+DTYPE_ZEROSEQ2WTRANSFORMERKEYS = {"I": str, "J": str, "K": str, "ICKT": str, "CZ0": str, "CZG": str, "CC": str, "RG1": str, "XG1": str, "R01": str, "X01": str, "RG2": str, "XG2": str, "R02": str, "X02": str, "RNUTRL": str, "XNUTRL": str}
+DTYPE_ZEROSEQ3WTRANSFORMERKEYS = {"I": str, "J": str, "K": str, "ICKT": str, "CZ0": str, "CZG": str, "CC": str, "RG1": str, "XG1": str, "R01": str, "X01": str, "RG2": str, "XG2": str, "R02": str, "X02": str, "RG3": str, "XG3": str, "R03": str, "X03": str, "RNUTRL": str, "XNUTRL": str}
+DTYPE_ZEROSEQSWITCHEDSHUNTKEYS = {"I": str, "BZ1": str, "BZ2": str, "BZ3": str, "BZ4": str, "BZ5": str, "BZ6": str, "BZ7": str, "BZ8": str}
+DTYPE_ZEROSEQFIXEDSHUNTKEYS = {"I": str, "ID": str, "GSZERO": str, "BSZERO": str}
+DTYPE_SEQINDUCTIONMACHINEKEYS = {"I": str, "ID": str, "CZG": str, "GRDFLG": str, "ILR2IR": str, "RTOX": str, "ZR0": str, "ZX0": str, "ZRG": str, "ZXG": str, "ILR2IR_TRN": str, "RTOX_TRN": str, "ILR2IR_NEG": str, "RTOX_NEG1": str}
+DTYPE_NONCONVENTIONALSOURCEFAULTCONTRIBUTIONKEYS = {"I": str, "ID": str, "T1": str, "C1P": str, "C1Q": str, "T2": str, "C2P": str, "C2Q": str, "T3": str, "C3P": str, "C3Q": str, "T4": str, "C4P": str, "C4Q": str, "T5": str, "C5P": str, "C5Q": str, "T6": str, "C6P": str, "C6Q": str}
+
+SEQ_DATA = {
+    "GENERATOR": SEQGENERATORKEYS,
+    "LOAD": SEQLOADKEYS,
+    "ZERO SEQ. MUTUAL": ZEROSEQMUTUALDATA,
+    "ZERO SEQ. NON-TRANSFORMER BRANCH": ZEROSEQNONTRANSFORMERBRANCHKEYS,
+    "ZERO SEQ. TRANSFORMER": [ZEROSEQ2WTRANSFORMERKEYS, ZEROSEQ3WTRANSFORMERKEYS],
+    "ZERO SEQ. SWITCHED SHUNT": ZEROSEQSWITCHEDSHUNTKEYS,
+    "ZERO SEQ. FIXED SHUNT": ZEROSEQFIXEDSHUNTKEYS,
+    "INDUCTION MACHINE": SEQINDUCTIONMACHINEKEYS,
+    "NON CONVENTIONAL SOURCE FAULT CONTRIBUTION": NONCONVENTIONALSOURCEFAULTCONTRIBUTIONKEYS,
+}
+
+DTYPE_SEQ_DATA = {
+    "GENERATOR": DTYPE_SEQGENERATORKEYS,
+    "LOAD": DTYPE_SEQLOADKEYS,
+    "ZERO SEQ. MUTUAL": DTYPE_ZEROSEQMUTUALDATA,
+    "ZERO SEQ. NON-TRANSFORMER BRANCH": DTYPE_ZEROSEQNONTRANSFORMERBRANCHKEYS,
+    "ZERO SEQ. TRANSFORMER": [DTYPE_ZEROSEQ2WTRANSFORMERKEYS, DTYPE_ZEROSEQ3WTRANSFORMERKEYS],
+    "ZERO SEQ. SWITCHED SHUNT": DTYPE_ZEROSEQSWITCHEDSHUNTKEYS,
+    "ZERO SEQ. FIXED SHUNT": DTYPE_ZEROSEQFIXEDSHUNTKEYS,
+    "INDUCTION MACHINE": DTYPE_SEQINDUCTIONMACHINEKEYS,
+    "NON CONVENTIONAL SOURCE FAULT CONTRIBUTION": DTYPE_NONCONVENTIONALSOURCEFAULTCONTRIBUTIONKEYS,
+}

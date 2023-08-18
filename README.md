@@ -1,8 +1,8 @@
 # psse34parser
 
-Este paquete permite obtener rapidamente una representacion de los archivos `.raw` de la version `34` del PSS\\E
+Este paquete permite obtener rapidamente una representacion de los archivos `.raw` y `.seq` de la version `34` del PSS\\E
 
-# Estructura de datos
+# Estructura de datos RAW
 Los datos estaran estructurados de acuerdo a la especificacion del manual del PSS\\E. Se utilizara un diccionario anidado con las siguientes llaves principales
 * BUS
 * LOAD
@@ -26,7 +26,19 @@ Los datos estaran estructurados de acuerdo a la especificacion del manual del PS
 * INDUCTION MACHINE
 * SUBSTATION
 
-Dentro de cada uno de estos diccionarios habra una lista con cada componente, cuyas llaves corresponden al string especificado en el manual (ver PAGV y POM). Estos strings van en MAYUSCULAS.
+Dentro de cada uno de estos diccionarios habra una lista con cada componente, cuyas llaves corresponden al string especificado en el manual (data format). Estos strings van en MAYUSCULAS.
+
+# Estructura de datos SEQ
+Los datos estaran estructurados de acuerdo a la especificacion del manual del PSS\\E. Se utilizara un diccionario anidado con las siguientes llaves principales
+* GENERATOR
+* LOAD
+* ZERO SEQ. MUTUAL
+* ZERO SEQ. NON-TRANSFORMER BRANCH
+* ZERO SEQ. TRANSFORMER
+* ZERO SEQ. SWITCHED SHUNT
+* ZERO SEQ. FIXED SHUNT
+* INDUCTION MACHINE
+* NON CONVENTIONAL SOURCE FAULT CONTRIBUTION
 
 # Ejemplo minimo de uso
 La lectura de los datos se puede hacer con:
@@ -53,4 +65,9 @@ Se utiliza `poetry` para configurar el proyecto.
 Para correr las pruebas automaticas se corre el siguiente comando desde la raiz del proyecto
 ```
 poetry run pytest
+```
+
+Para entrar al debbugger por si falla algun test se puede usar la opcion post mortem:
+```
+poetry run pytest --pdb
 ```

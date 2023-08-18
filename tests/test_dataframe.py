@@ -2,8 +2,9 @@ import psse34parser
 import pytest
 import os
 
-minimal_data = psse34parser.read_case("tests/data/minimal.raw")
-transformer_data = psse34parser.read_case("tests/data/transformer.raw")
+minimal_data = psse34parser.read_case_raw("tests/data/minimal.raw")
+transformer_data = psse34parser.read_case_raw("tests/data/transformer.raw")
+seq_data = psse34parser.read_case_seq("tests/data/example.seq")
 
 def test_convert_to_dataframe_bus():
     df = psse34parser.convert_to_dataframe(minimal_data["BUS"])
@@ -17,3 +18,12 @@ def test_convert_to_dataframe_multi_components():
     df = psse34parser.convert_to_dataframe(transformer_data["TRANSFORMER"])
     assert len(df.columns) == 114
     assert len(df) == 2
+
+def test_convert_to_dataframe_seq_data():
+    df = psse34parser.convert_to_dataframe(seq_data["GENERATOR"])
+    assert len(df.columns) == 14
+    assert len(df) == 6
+    
+def test_generate_data_model():
+    data_model = psse34parser.generate_dataframe_model(transformer_data)
+    assert isinstance(data_model, dict)
