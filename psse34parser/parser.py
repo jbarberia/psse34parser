@@ -115,7 +115,6 @@ def read_case_seq(filename):
 
             if type_data: # Header of block data
                 key = type_data
-                print(key)
                 continue
 
             if key:
