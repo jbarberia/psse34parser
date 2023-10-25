@@ -2,6 +2,15 @@ import pandas as pd
 
 def convert_to_dataframe(data: list) -> pd.DataFrame:
 
+    # Empty dict for no data
+    # TODO sumar columnas
+    if not data: 
+        return pd.DataFrame()
+    
+    # Headers
+    if isinstance(data, dict):
+        return pd.Series(data)
+
     # Flatten multiline data
     if isinstance(data[0], list):
         flatten_data = []
@@ -18,3 +27,4 @@ def generate_dataframe_model(data: dict) -> dict:
     df_model = {}
     for key, values in data.items():
         df_model[key] = convert_to_dataframe(values)
+    return df_model

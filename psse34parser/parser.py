@@ -42,7 +42,7 @@ def read_case(filename):
                         if j < 3:
                             line = next(f)
                         elif j == 3:
-                            line = next(f) if components[0]["K"] != '0' else ""
+                            line = next(f) if components[0]["K"] != 0 else ""
                     # Append to case
                     case34[key].append(components)
                 else:
@@ -78,5 +78,11 @@ def get_type_of_data(line):
 def get_parts(line, data: list, dtype: dict):
     parts = [part.strip() for part in line.split(",")]
     parts.extend([None] * (len(data) - len(parts)))
-    component = {key: dtype[key](part) for key, part in zip(data, parts)}
+    component = {key: convert(part, dtype[key]) for key, part in zip(data, parts)}
     return component
+
+def convert(part, dtype):
+    if not part:
+        return None
+    else:
+        return dtype(part)
