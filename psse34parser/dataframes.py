@@ -26,5 +26,14 @@ def convert_to_dataframe(data: list) -> pd.DataFrame:
 def generate_dataframe_model(data: dict) -> dict:
     df_model = {}
     for key, values in data.items():
+        if isinstance(values, dict):
+            df_model[key] = values
+            continue
+        
+        if len(values) == 0:
+            continue
+
         df_model[key] = convert_to_dataframe(values)
+    return df_model
+
     return df_model
