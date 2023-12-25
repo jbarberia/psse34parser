@@ -87,7 +87,10 @@ def get_parts(line, data: list, dtype: dict):
 
 def try_parse(dtype, data):
     try:
+        if data and dtype == str:
+            return dtype(data.replace("'", ""))
         return dtype(data)
+    
     except TypeError:
         return None
 

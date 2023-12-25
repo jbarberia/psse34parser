@@ -27,3 +27,6 @@ def test_convert_to_dataframe_seq_data():
 def test_generate_data_model():
     data_model = psse34parser.generate_dataframe_model(transformer_data)
     assert isinstance(data_model, dict)
+
+def test_to_excel():
+    transformer_data = psse34parser.export_raw_to_excel("tests/data/sample.raw", "sample.xlsx")
