@@ -21,6 +21,9 @@ def read_case_raw(filename):
                 case34["HEADER"] = parts
                 continue
 
+            if type_data == "SKIP":
+                continue
+
             if type_data: # Header of block data
                 key = type_data
                 continue
@@ -74,6 +77,11 @@ def get_type_of_data(line):
     match_data_type = re.search(r"(?<=BEGIN\s).*(?=\sDATA)", line)
     if match_data_type:
         return match_data_type.group()
+    
+    # esto es para el ultimo conjunto de elementos
+    # para evitar leer el final del campo
+    if "0" in line[0]: 
+        return "SKIP"
 
     return None
 
@@ -114,6 +122,9 @@ def read_case_seq(filename):
             if type_data == "HEADER":
                 #parts = get_parts(line.split("/")[0], HEADERKEYS, DTYPE_HEADERKEYS)
                 #case34["HEADER"] = parts
+                continue
+
+            if type_data == "SKIP":
                 continue
 
             if type_data: # Header of block data
