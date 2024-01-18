@@ -1,11 +1,20 @@
 import re
+import io
 from .dataformat import SEQ_DATA, RAW_DATA, DTYPE_SEQ_DATA, DTYPE_RAW_DATA, HEADERKEYS, DTYPE_HEADERKEYS,MULTILINECOMPONENTS
 
 def read_case_raw(filename):
+    """Lee un archivo raw
+
+    Args:
+        filename (str): ruta del archivo
+
+    Returns:
+        dict: Mapeo de los componentes del RAW
+    """
     case34 = {key: [] for key in RAW_DATA.keys()}
     key = None
 
-    with open(filename, encoding="latin-1") as f:
+    with io.open(filename, encoding="latin-1") as f:
         for line in f:
 
             # Get type of data
@@ -86,7 +95,17 @@ def get_type_of_data(line):
     return None
 
 
-def get_parts(line, data: list, dtype: dict):
+def get_parts(line, data, dtype):
+    """Genera la estructura de datos para una linea en el RAW o SEQ
+
+    Args:
+        line (str): linea 
+        data (list): lista de campos del elemento que se lee
+        dtype (dict): tipo de datos del campo del elemento
+
+    Returns:
+        dict: mapeo de campos -> valor en su correspondiente formato
+    """
     parts = [part.strip() for part in line.split(",")]
     parts.extend([None] * (len(data) - len(parts)))
     component = {key: try_parse(dtype[key], part) for key, part in zip(data, parts)}
@@ -94,6 +113,15 @@ def get_parts(line, data: list, dtype: dict):
 
 
 def try_parse(dtype, data):
+    """Intenta convertir un dato a su correspondiente tipo de dato
+
+    Args:
+        dtype (fun): funcion de conversion
+        data (str): texto con el valor a convertir
+
+    Returns:
+        any: dato convertido
+    """
     try:
         if data and dtype == str:
             return dtype(data.replace("'", ""))
@@ -104,10 +132,18 @@ def try_parse(dtype, data):
 
 
 def read_case_seq(filename):
+    """Lee un archivo SEQ
+
+    Args:
+        filename (str): ruta del archivo SEQ
+
+    Returns:
+        dict: mapeo de componentes de los datos del SEQ
+    """
     case34 = {key: [] for key in SEQ_DATA.keys()}
     key = None
 
-    with open(filename, encoding="latin-1") as f:
+    with io.open(filename, encoding="latin-1") as f:
 
         for line in f:
                         # Get type of data

@@ -56,10 +56,6 @@ generate_dataframe_model(data)
 print(data["BUS"].head())
 ```
 
-# Cosas para hacer
-[x] Generar tablas con DataFrames de los componentes
-[ ] Posibilidad de pasar el diccionario con la estructura a un objeto 
-
 # Desarrollo
 Se utiliza `poetry` para configurar el proyecto.
 Para correr las pruebas automaticas se corre el siguiente comando desde la raiz del proyecto
