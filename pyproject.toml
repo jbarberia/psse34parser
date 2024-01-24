@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "psse34parser"
-version = "0.0.2"
+version = "0.0.3"
 description = ""
 authors = ["jbarberia <jbarberia@frba.utn.edu.ar>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^2.7 || >=3.7.1"
-pandas = "^0.24"
+
 
 
 [build-system]

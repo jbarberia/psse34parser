@@ -1,5 +1,4 @@
 import pandas as pd
-import openpyxl
 from .parser import read_case_raw, read_case_seq
 
 def convert_to_dataframe(data):
@@ -54,39 +53,3 @@ def generate_dataframe_model(data):
 
         df_model[key] = convert_to_dataframe(values)
     return df_model
-
-
-def export_raw_to_excel(raw, ofile):
-    """Genera un excel con los datos de un archivo RAW
-
-    Args:
-        raw (str): ruta del archivo RAW
-        ofile (str): ruta del excel de salida
-    """
-    wb = openpyxl.Workbook()
-    wb.save(filename=ofile)
-
-    raw = read_case_raw(raw)
-    raw_df = generate_dataframe_model(raw)
-    for key in raw_df:
-        if isinstance(raw_df[key], pd.DataFrame):
-            with pd.ExcelWriter(ofile, mode="a", engine="openpyxl", if_sheet_exists="replace") as writer:
-                raw_df[key].to_excel(writer, sheet_name=key, float_format="%.6f", index=False)
-
-def export_seq_to_excel(seq, ofile):
-    """Genera un excel con los datos de un archivo SEQ
-    
-    Args:
-        seq (str): ruta del archivo SEQ
-        ofile (str): ruta del excel de salida
-    """
-    wb = openpyxl.Workbook()
-    wb.save(filename=ofile)
-
-    seq = read_case_seq(seq)
-    seq_df = generate_dataframe_model(seq)
-    for key in seq_df:
-        if isinstance(seq_df[key], pd.DataFrame):
-            with pd.ExcelWriter(ofile, mode="a", engine="openpyxl", if_sheet_exists="replace") as writer:
-                seq_df[key].to_excel(writer, sheet_name=key, float_format="%.6f", index=False)
-
