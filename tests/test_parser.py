@@ -18,4 +18,11 @@ def test_read_seq():
     assert len(data["GENERATOR"]) == 6
     assert data["GENERATOR"][0]["I"] == 101
 
+
+def test_read_raw_with_sw_shunt_short():
+    filename = "tests/data/edenor.raw"
+    data = psse34parser.read_case_raw(filename)
+
+    assert isinstance(data["SWITCHED SHUNT"][0]["I"], int)
+
     

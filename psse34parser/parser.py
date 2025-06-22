@@ -127,6 +127,14 @@ def try_parse(dtype, data):
             return dtype(data.replace("'", ""))
         return dtype(data)
     
+    except ValueError:
+        if isinstance(dtype, int):
+            return 0        
+        elif isinstance(dtype, float):
+            return 0.0        
+        elif isinstance(dtype, str):
+            return ""
+        
     except TypeError:
         return None
 
@@ -152,7 +160,6 @@ def read_case_seq(filename):
                 break # End of file
 
             if type_data == "COMMENT":
-                
                 continue # Skip comment
 
             if type_data == "HEADER":
