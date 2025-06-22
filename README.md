@@ -56,5 +56,15 @@ generate_dataframe_model(data)
 print(data["BUS"].head())
 ```
 
+Por otro lado con el raw y el seq leidos se pueden generar scripts que armen el sistema
+```python
+seq_file = "tests/data/sample.seq"
+raw = psse34parser.read_case_raw(raw_file)
+seq = psse34parser.read_case_seq(seq_file)
+codigo = psse34parser.crea_codigo(raw, seq)
+with open("codigo.py", "w") as f:
+    f.write(codigo)
+```
+
 # Desarrollo
 Dentro del Makefile estan las recetas de `install` y `test` para instalar y correr las pruebas del paquete.
