@@ -57,13 +57,4 @@ print(data["BUS"].head())
 ```
 
 # Desarrollo
-Se utiliza `poetry` para configurar el proyecto.
-Para correr las pruebas automaticas se corre el siguiente comando desde la raiz del proyecto
-```
-poetry run pytest
-```
-
-Para entrar al debbugger por si falla algun test se puede usar la opcion post mortem:
-```
-poetry run pytest --pdb
-```
+Dentro del Makefile estan las recetas de `install` y `test` para instalar y correr las pruebas del paquete.
